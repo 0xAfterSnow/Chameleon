@@ -1,0 +1,15 @@
+{
+  "name": "chameleon-arc-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.13.1"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env demo/server.mjs",
+    "test": "node --test",
+    "build": "node --check demo/server.mjs && node --check demo/public/app.js && node --check demo/lib/api.mjs && node --check demo/lib/webhook.mjs",
+    "doctor": "node --env-file-if-exists=.env demo/doctor.mjs"
+  }
+}
