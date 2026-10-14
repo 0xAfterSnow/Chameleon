@@ -1,6 +1,6 @@
 # Implementation audit and security review
 
-Review date: October 11, 2026. This is a source and local-client review, not a production security certification.
+Source review date: October 11, 2026. Documentation status updated October 14, 2026: the owner reports mainnet configuration is enabled. Findings below describe the inspected source and historical local checks; they are not a new audit of the separate deployed repository. Configuration changes alone do not resolve source findings.
 
 ## Existing integration findings
 
@@ -29,11 +29,11 @@ Wallet uncertainty is retained to block another automatic signing attempt after 
 
 ## Validation record
 
-- Ten Node tests passed (including explicit testnet isolation and configuration diagnostics): signatures, wrong configuration, disabled checkout, public contract/idempotency, origin/amount restrictions, submitted status, webhook receipt/deduplication, rate limits.
+- Twelve Node tests passed in the last local test run (including testnet isolation, configuration diagnostics and loopback-origin compatibility): signatures, wrong configuration, disabled checkout, public contract/idempotency, origin/amount restrictions, submitted status, webhook receipt/deduplication, rate limits.
 - Syntax/build checks passed. This buildless client requires no bundler.
 - Test upstream responses are explicitly fixtures in tests; they are not live payment evidence.
 - Third-party dependency vulnerability audit: no third-party package dependencies to audit. The Node runtime and container base image still require normal patching and deployment image scanning; no current advisory database scan is claimed.
 - Targeted credential/source review covers the standalone source and docs. Test-only secret strings are synthetic. `.env.example` contains placeholders; no production environment files were read or copied.
-- The parent Git ignore was verified. No child `.git` exists and no history was copied; inspect fresh history again after the owner initializes the public repository.
+- During preparation, the parent Git ignore was verified and no Git history was copied. The owner has since moved the project to another repository; its current history and visibility have not been inspected here.
 - Desktop (1440px) and mobile (390px) setup-state pages were rendered in headless Chrome and visually inspected. No real wallet interaction was exercised.
 - Docker image build and live-mainnet checks were not performed.

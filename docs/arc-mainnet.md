@@ -1,4 +1,4 @@
-# Arc mainnet preflight
+# Arc mainnet configuration and verification
 
 Official documentation reviewed October 11, 2026:
 
@@ -7,7 +7,9 @@ Official documentation reviewed October 11, 2026:
 
 The demo fixes these public network values. It does not read local production environment files or execute transfers during preparation.
 
-Before setting MAINNET_READY=true:
+The owner reports mainnet is enabled with `MAINNET_READY=true` as of October 14, 2026. Preserve these verification checks for the deployed system; enabling a flag alone does not establish their completion.
+
+Deployment checks:
 
 1. Provision an isolated demo merchant, receiving wallet and checkout of at most 1 USDC. Fund the reviewer's wallet separately, including gas, only with explicit transfer authorization.
 2. Configure the private gateway for `ARC_NETWORK=arc-mainnet`, verified RPC and official USDC configuration, with memo payments enabled. Set and review its confirmation policy explicitly. Check Memo contract deployment and ABI against official documentation and live code.
@@ -17,4 +19,4 @@ Before setting MAINNET_READY=true:
 6. Confirm expiry/recovery workers, webhook delivery/retries and PostgreSQL locking are operational. Local source and fixture tests are not deployment proof.
 7. Authorize and perform a low-value end-to-end payment manually. Collect the actual intent, explorer transaction URL, verified status and signed webhook receipt. Include failure/expiry handling in the walkthrough.
 
-Mainnet operation remains unverified until these steps succeed. No real payment has been executed as part of this work. Do not label test fixtures, an enabled flag, a rendered frontend, or a user-submitted transaction hash as mainnet evidence.
+No completed mainnet transaction or webhook receipt has been supplied for this documentation update. Add the actual evidence to the README after verification. Do not label test fixtures, an enabled flag, a rendered frontend, or a user-submitted transaction hash as mainnet evidence.
